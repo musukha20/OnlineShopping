@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- load annotated beans -->
+    <context:component-scan base-package="com.lti.service" />
+    <context:component-scan base-package="com.lti.dao"/>
+
+    <bean id = "dataSource" class = "org.apache.commons.dbcp2.BasicDataSource">
+  		 <property name = "driverClassName" value = "oracle.jdbc.OracleDriver"/>
+  		 <property name = "url" value = "jdbc:oracle:thin:@localhost:1521:OSE"/>
+  		 <property name = "username" value = "system"/>
+  		 <property name = "password" value = "Musukha5898"/>
+  		 <property name="initialSize" value="1"/>
+	</bean>
+	
+	<!--  
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<property name="dataSource" ref="dataSource"/>
+    </bean>
+    -->
+    
+    <!-- This bean entry will help us   create the EntityManagerFactory & EntityManager
+    
+    	object for us.Because of this entry , we can simply  inject the EnityManager 
+    	object in any class we need using @PersistanceContext annotation.
+    	Also we don't need  a separate META-INF/Persistance.xml now , all the settings 
+    	required for setting up an ORM can be done within this  bean definition itself -->
+    
+    
+    <bean id="myEmf" 
+  		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+   			 <property name="dataSource" ref="dataSource" />								<!-- DataSource/Database we want to use -->
+   			 <property name="packagesToScan" value="com.lti.entity" />
+   			 <property name="jpaVendorAdapter">
+      			 <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+    		 </property>
+  			  <property name="jpaProperties">
+      			 <props>
+           				 <!-- <prop key="hibernate.hbm2ddl.auto">Validate</prop> -->
+            			<prop key="hibernate.show_sql">true</prop>
+        		</props>
+   			 </property>
+	</bean>
+ 
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    	<property name="entityManagerFactory" ref="myEmf" />
+	</bean>
+	
+	<tx:annotation-driven />
+    
+</beans>
