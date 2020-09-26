@@ -1,13 +1,28 @@
 package com.lti.entity;
 
-public class Address {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "address")
+public class Address {
+	
+	@Id
+	@Column(name="address_id")
 	private int addressId;
+	
 	private String state;
 	private String city;
 	private int pincode;
 	private String type;
-	private int userId;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private Customer customer;
+	
 	public int getAddressId() {
 		return addressId;
 	}
@@ -38,11 +53,12 @@ public class Address {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getUserId() {
-		return userId;
+	public Customer getCustomer() {
+		return customer;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
+	
 	
 }

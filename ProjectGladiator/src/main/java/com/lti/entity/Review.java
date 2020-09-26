@@ -1,6 +1,6 @@
 package com.lti.entity;
 
-public class Comment {
+public class Review {
 	
 	private int commentId;
 	private int rating;

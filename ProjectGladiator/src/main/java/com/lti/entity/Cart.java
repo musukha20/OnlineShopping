@@ -1,6 +1,8 @@
 package com.lti.entity;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 public class Cart {
 
@@ -9,6 +11,10 @@ public class Cart {
 	private int quantity;
 	@Column(name="total_price")
 	private double totalPrice;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private Customer customer;
 	
 	public int getCartId() {
 		return cartId;

@@ -2,7 +2,7 @@ package com.lti.entity;
 
 import javax.persistence.Column;
 
-public class Order {
+public class Purchase {
 
 	@Column(name="order_id")
 	private int orderId;

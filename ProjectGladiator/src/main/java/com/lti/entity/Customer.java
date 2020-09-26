@@ -1,16 +1,34 @@
 package com.lti.entity;
 
 import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-public class User {
+@Entity
+@Table(name="customer")
+public class Customer {
 	
+	@Id
+	@Column(name="user_id")
 	private int userId;
 	private LocalDate dateOfBirth;
 	private String email;
 	private int phoneNo;
 	private String password;
 	private int creditCard;
-	private int cartId;
+	
+	@OneToOne(mappedBy="customer")
+	private Cart cart;
+	
+	@OneToMany(mappedBy= "customer")
+	private List<Address> addresses;
+	
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -47,11 +65,18 @@ public class User {
 	public void setCreditCard(int creditCard) {
 		this.creditCard = creditCard;
 	}
-	public int getCartId() {
-		return cartId;
+	
+	public List<Address> getAddresses() {
+		return addresses;
 	}
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 	
 	

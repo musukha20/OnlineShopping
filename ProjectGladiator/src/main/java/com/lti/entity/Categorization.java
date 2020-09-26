@@ -1,6 +1,6 @@
 package com.lti.entity;
 
-public class Category {
+public class Categorization {
 	
 	private int categoryId;
 	private String name;
