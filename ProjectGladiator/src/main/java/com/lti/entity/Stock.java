@@ -1,12 +1,31 @@
 package com.lti.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="stock")
 public class Stock {
 	
+	@Id
+	@Column(name="stock_id")
 	private int stockId;
 	private int quantity;
 	private double price;
-	private int categoryId;
-	private int retailerId;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="retailer_id")
+	private Retailer retailer;
+	
+	@ManyToOne
+	@JoinColumn(name="category_id")
+	private Categorization category;
+	
 	public int getStockId() {
 		return stockId;
 	}
@@ -25,17 +44,17 @@ public class Stock {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getCategoryId() {
-		return categoryId;
+	public Retailer getRetailer() {
+		return retailer;
 	}
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+	public void setRetailer(Retailer retailer) {
+		this.retailer = retailer;
 	}
-	public int getRetailerId() {
-		return retailerId;
+	public Categorization getCategory() {
+		return category;
 	}
-	public void setRetailerId(int retailerId) {
-		this.retailerId = retailerId;
+	public void setCategory(Categorization category) {
+		this.category = category;
 	}
 	
 

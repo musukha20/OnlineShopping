@@ -1,7 +1,10 @@
 package com.lti.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 public class Cart {
@@ -15,6 +18,12 @@ public class Cart {
 	@OneToOne
 	@JoinColumn(name="user_id")
 	private Customer customer;
+	
+	@OneToMany(mappedBy="cart")
+	private List <Product> products;
+	
+	@OneToMany(mappedBy="cart")
+	private List <Purchase> orders;
 	
 	public int getCartId() {
 		return cartId;
@@ -33,6 +42,24 @@ public class Cart {
 	}
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public List<Purchase> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<Purchase> orders) {
+		this.orders = orders;
 	}
 	
 	

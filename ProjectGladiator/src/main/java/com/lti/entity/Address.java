@@ -19,6 +19,7 @@ public class Address {
 	private String city;
 	private int pincode;
 	private String type;
+	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private Customer customer;

@@ -1,13 +1,41 @@
 package com.lti.entity;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="retailer")
 public class Retailer {
 	
+	@Id
+	@Column(name="retailer_id")
 	private int retailerId;
+	
 	private String name;
 	private String adress;
 	private String email;
+	
+	@Column(name="phone_no")
 	private int phoneNo;
+	
 	private String password;
+	
+	@ManyToOne
+	@JoinColumn(name="admin_id")
+	private Admin admin;
+	
+	@OneToMany(mappedBy="retailer")
+	private List<Product> products;
+	
+	@OneToMany(mappedBy="retailer")
+	private List<Stock> stocks;
 	
 	public int getRetailerId() {
 		return retailerId;
@@ -44,6 +72,24 @@ public class Retailer {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Admin getAdmin() {
+		return admin;
+	}
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+	public List<Stock> getStocks() {
+		return stocks;
+	}
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
 	}
 	
 	
