@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,6 +17,7 @@ public class Product {
 
 	@Id
 	@Column(name = "product_id")
+	@GeneratedValue
 	private int productId;
 
 	@Column(name = "name")
@@ -26,9 +28,6 @@ public class Product {
 
 	@Column(name = "quantity")
 	private int productQuantity;
-
-	@Column(name = "retailer_id")
-	private int retailerId;
 
 	@OneToMany(mappedBy = "product")
 	private List<Review> reviews;
@@ -75,14 +74,6 @@ public class Product {
 
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
-	}
-
-	public int getRetailerId() {
-		return retailerId;
-	}
-
-	public void setRetailerId(int retailerId) {
-		this.retailerId = retailerId;
 	}
 
 	public List<Review> getReviews() {
