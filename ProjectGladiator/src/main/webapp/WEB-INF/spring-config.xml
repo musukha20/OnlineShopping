@@ -13,13 +13,13 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- load annotated beans -->
-    <context:component-scan base-package="com.lti.controller" />
-<!--  
+    <context:component-scan base-package="com.lti.dao" />
+  
     <bean id = "dataSource" class = "org.apache.commons.dbcp2.BasicDataSource">
-  		 <property name = "driverClassName" value = "oracle.jdbc.OracleDriver"/>
-  		 <property name = "url" value = "jdbc:oracle:thin:@localhost:1521:OSE"/>
-  		 <property name = "username" value = "system"/>
-  		 <property name = "password" value = "Musukha5898"/>
+  		 <property name = "driverClassName" value = "oracle.jdbc.driver.OracleDriver"/>
+  		 <property name = "url" value = "jdbc:oracle:thin:@localhost:1521:ORCLCDB"/>
+  		 <property name = "username" value = "gladiator"/>
+  		 <property name = "password" value = "onshopping"/>
   		 <property name="initialSize" value="1"/>
 	</bean>
 	
@@ -50,6 +50,6 @@
 	</bean>
 	
 	<tx:annotation-driven />
-	-->
+	
     
 </beans>

@@ -1,9 +1,10 @@
-package com.lti.entity;
+package com.project.entity;
 
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,10 +17,11 @@ public class Retailer {
 	
 	@Id
 	@Column(name="retailer_id")
+	@GeneratedValue
 	private int retailerId;
 	
 	private String name;
-	private String adress;
+	private String address;
 	private String email;
 	
 	@Column(name="phone_no")
@@ -49,11 +51,11 @@ public class Retailer {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getEmail() {
 		return email;
