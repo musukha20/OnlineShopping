@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class GenericDaoImpl{
+public class GenericDaoImpl implements GenericDao{
 
 	@PersistenceContext
 	protected EntityManager entityManager;

@@ -2,6 +2,8 @@ package com.project.entity;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +30,7 @@ public class Customer {
 	@OneToOne(mappedBy="customer")
 	private Cart cart;
 	
-	@OneToMany(mappedBy= "customer")
+	@OneToMany(mappedBy= "customer",cascade=CascadeType.MERGE)
 	private List<Address> addresses;
 	
 	
