@@ -21,6 +21,7 @@ public class Customer {
 	@GeneratedValue
 	private int userId;
 	
+	private String name;
 	private LocalDate dateOfBirth;
 	private String email;
 	private int phoneNo;
@@ -82,6 +83,12 @@ public class Customer {
 	}
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

@@ -6,13 +6,18 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.entity.Customer;
 import com.project.entity.Retailer;
 
-@RestController
-public class CustomerAddressDao  {
+@Component
+public class CustomerAddressDao extends GenericDaoImpl {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
 	
+	@Transactional
+	public void save(Customer customer) {
+		entityManager.persist(customer);
+	}
 	
 }
