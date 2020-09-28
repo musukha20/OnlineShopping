@@ -24,8 +24,9 @@ public class CustomerTest {
 		c.setEmail("abk@gmail.com");
 		c.setPassword("elephant");
 		c.setName("Abheek");
-		CustomerService rserv = (CustomerService) ctx.getBean("cs");
-		rserv.add(c);
+		//c.setCart(cart);
+		CustomerService cserv = (CustomerService) ctx.getBean("cs");
+		cserv.add(c);
 	}
 
 }

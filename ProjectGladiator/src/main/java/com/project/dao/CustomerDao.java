@@ -10,7 +10,7 @@ import com.project.entity.Customer;
 import com.project.entity.Retailer;
 
 @Component
-public class CustomerAddressDao extends GenericDaoImpl {
+public class CustomerDao extends GenericDaoImpl {
 	
 	@PersistenceContext
 	private EntityManager entityManager;

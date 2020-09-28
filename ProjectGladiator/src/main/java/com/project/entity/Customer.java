@@ -7,9 +7,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,8 @@ public class Customer {
 	
 	@Id
 	@Column(name="user_id")
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator = "seq")
+	@SequenceGenerator(name="seq" ,sequenceName = "seq_carpart" , initialValue = 1000,allocationSize = 10)
 	private int userId;
 	
 	private String name;

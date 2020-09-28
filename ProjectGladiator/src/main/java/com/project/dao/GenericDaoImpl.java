@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+
 public class GenericDaoImpl implements GenericDao{
 
 	@PersistenceContext
