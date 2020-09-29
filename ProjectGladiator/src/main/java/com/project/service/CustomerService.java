@@ -13,12 +13,9 @@ public class CustomerService {
 	@Autowired
 	private CustomerDao customerDao;
 	
-	@Transactional
-	public void add(Customer c) {
-		if(c.getName()=="Abheek") {
-			customerDao.save(c);
-		}
-		else
-			throw new RetailerException("Cannot Add this Retailer");
-	}
+
+	public void register(Customer customer)
+	{
+		customerDao.save(customer);
+	} 
 }
